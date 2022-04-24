@@ -1,38 +1,226 @@
+/* //layout */
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  /* border: 1px solid var(--color-sub); */
+}
 .App {
+  --color-h1: #8c8c8c;
+  --color-title: #fff;
+  --color-sub: #999;
+  --color-link: #000;
+  --color-bg: #000;
+  --font-family: 'Lato','Chosunilbo_myungjo';
+  --aspect-ratio: 33/17;
+  --image-width-max: 500px;
+
+  background-color: var(--color-bg);
+}
+nav {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translate(0, -50%);
+}
+#section0 {
+  background-color: var(--color-bg);
+}
+section {
+  width: 100%;
+  background-color: var(--color-bg);
+}
+/* //layout */
+
+/* nav */
+nav li {
+  margin-top: 20px;
+  transition: .2s;
+}
+nav li:hover {
+  transform: scale(1.2);
+}
+nav li.active a .nav-filter {
+  display: none;
+}
+nav li a {
+  position: relative;
+  width: 35px;
+  height: 35px;
+}
+nav li a .nav-filter {
+  position: absolute;
+  z-index: 1111;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+nav li a img {
+  display: block;
+  width: 35px;
+  height: 35px;
+}
+nav li a em {
+  display: none;
+}
+/* //nav */
+
+/* section0 */
+#section0 h1 {
+  font-size: 8vw;
+  color: var(--color-h1);
+  text-transform: uppercase;
+  padding: 10vw 8vw 0 8vw;
+  font-weight: 100;
+}
+#section0 h1 em {
+  display: block;
+  font-family: 'Lato';
+  padding-left: 18vw;
+  font-weight: normal;
+}
+#section0 .moon-main {
   text-align: center;
+  width: 80vw;
+  display: block;
+}
+#section0 span {
+  color: var(--color-h1);
+  color: #fff;
+  transform: translate(0, -8vh);
+}
+/* //section0 */
+
+
+
+/* section1 */
+.contents {
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+}
+.contents .content-item {
+  margin: 60vh 0;
+}
+#section1 img {
+  width: 600px;
+  display: inline-block;
+}
+.terrain-wrap {
+  float: right;
+  width: 500px;
+}
+.terrain-wrap .terrain-item {
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.terrain-wrap .terrain-item .line {
+  position: absolute;
+  height: 100px;
+  transform: translate(calc(-100% - 20px), 20px);
+}
+.terrain-wrap .terrain-item .line .diagonal{
+  display: inline-block;
+  width: 100px;
+  height: 100%;
+  transition: all .5s;
+  transform: translate(50px, 20.71px) rotate(-45deg);
+  border-top: 1px solid white;
+}
+.terrain-wrap .terrain-item .line .horizon {
+  display: inline-block;
+  height: 100px;
+  transition: all .5s;
+  border-top: 1px solid white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.terrain-wrap .terrain-item.sea .line {
+  width: 530px;
+}
+.terrain-wrap .terrain-item.sea .line .horizon {
+  width: 430px;
+}
+.terrain-wrap .terrain-item.mountain .line {
+  width: 430px;
+}
+.terrain-wrap .terrain-item.mountain .line .horizon {
+  width: 330px;
+}
+.terrain-wrap .terrain-item.craters .line {
+  width: 460px;
+}
+.terrain-wrap .terrain-item.craters .line .horizon {
+  width: 360px;
+}
+
+
+.terrain-wrap .terrain-item h2 {
+  margin-top: 40px;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--color-title);
+  transform: translate(-5px, 0);
+  transition: all .5s;
+}
+.terrain-wrap .terrain-item.sea h2{
+  margin: 0;
+}
+.terrain-wrap .terrain-item h2 em {
+  font-size: 25px;
+  color: var(--color-h1);
+}
+.terrain-wrap p {
+  margin-top: 10px;
+  padding-left: 10px;
+  color: var(--color-sub);
+  line-height: 25px;
+  transition: all .5s;
+}
+/* /section1 */
+
+
+
+/* media query */
+@media screen and (min-width:1280px) {
+	/* Desktop */
+  
+}
+@media screen and (max-width:1279px) {
+	/* Desktop */
+  .container {
+    width: 90vw;
+  }
+  .terrain-wrap .terrain-item .line {
+    display: none;
+  }
+  .terrain-wrap {
+    margin: 100px auto;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 1023px) {
+	/* Tablet */
+  #intro h1 {
+    font-size: 15vw;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  #intro h1 em {
+    padding-left: 0;
+    font-weight: normal;
+  }
+  #intro .moon-main {
+    width: 100vw;
   }
 }
+@media screen and (max-width:767px){ 
+	/* Mobile */
+  #section1 img {
+    width: 80%;
+    text-align: center;
+  }
+  .terrain-wrap {
+    float: left;
+    width: 80%;
+  }
+}
+/* //media query */
